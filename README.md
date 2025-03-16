@@ -1,10 +1,10 @@
 # Pelikirjasto #
 HY:n Tietokannat ja web-ohjelmointi -kurssin harjoitustyö
 
-## Kuvaus ##
+## Sovelluksen kuvaus ##
 Sovelluksen tarkoituksena on mahdollistaa käyttäjälle lista hänen omistamistaan (lauta)peleistä. Eri käyttäjät voivat nähdä toistensa pelikirjastot sekä arvioida pelejä (kuten haastavuus ja arvosana).
 
-## Ominaisuudet ##
+## Sovelluksen toiminnot ##
 * Käyttäjä voi luoda uuden käyttäjätunnuksen
 * Käyttäjä voi kirjautua sisään käyttäjätunnuksella ja salasanalla
 * Käyttäjä voi lisätä sovellukseen pelejä
