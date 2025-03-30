@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Muokkaa pelin tietoja</title>
+</head>
+
+<body>
+  <h1>Muokkaa pelin tietoja</h1>
+  <form action="/update_item" method="post">
+    <p>
+      Pelin nimi: <br />
+      <input type="text" name="title" size="25" value="{{ item.title }}"/>
+    </p>
+    <p>
+      Minimipelaajamäärä <br />
+      <input type="radio" name="min_players" value="1" {% if item.min_players == 1 %}checked{% endif %} /> 1
+      <input type="radio" name="min_players" value="2" {% if item.min_players == 2 %}checked{% endif %} /> 2
+      <input type="radio" name="min_players" value="3" {% if item.min_players == 3 %}checked{% endif %} /> 3
+      <input type="radio" name="min_players" value="4" {% if item.min_players == 4 %}checked{% endif %} /> 4
+    </p>
+    <p>
+      Maksimipelaajmäärä <br />
+      <input type="radio" name="max_players" value="2" {% if item.max_players == 2 %}checked{% endif %} /> 2
+      <input type="radio" name="max_players" value="3" {% if item.max_players == 3 %}checked{% endif %} /> 3
+      <input type="radio" name="max_players" value="4" {% if item.max_players == 4 %}checked{% endif %} /> 4
+      <input type="radio" name="max_players" value="5" {% if item.max_players == 5 %}checked{% endif %} /> 5
+      <input type="radio" name="max_players" value="6" {% if item.max_players == 6 %}checked{% endif %} /> 6
+      <input type="radio" name="max_players" value="8" {% if item.max_players == 8 %}checked{% endif %} /> 8
+      <input type="radio" name="max_players" value="10" {% if item.max_players == 10 %}checked{% endif %} /> 10
+      <input type="radio" name="max_players" value="12" {% if item.max_players == 12 %}checked{% endif %} /> 12
+      <input type="radio" name="max_players" value="16" {% if item.max_players == 16 %}checked{% endif %} /> 16
+      <input type="radio" name="max_players" value="99" {% if item.max_players == 99 %}checked{% endif %} /> 99
+    <p>
+      Ikäsuositus <br />
+      <input type="radio" name="age_recommendation" value="5+" {% if item.age_recommendation == '5+' %}checked{% endif %} /> 5+
+      <input type="radio" name="age_recommendation" value="6+" {% if item.age_recommendation == '6+' %}checked{% endif %} /> 6+
+      <input type="radio" name="age_recommendation" value="7+" {% if item.age_recommendation == '7+' %}checked{% endif %} /> 7+
+      <input type="radio" name="age_recommendation" value="8+" {% if item.age_recommendation == '8+' %}checked{% endif %} /> 8+
+      <input type="radio" name="age_recommendation" value="9+" {% if item.age_recommendation == '9+' %}checked{% endif %} /> 9+
+      <input type="radio" name="age_recommendation" value="10+" {% if item.age_recommendation == '10+' %}checked{% endif %} /> 10+
+      <input type="radio" name="age_recommendation" value="12+" {% if item.age_recommendation == '12+' %}checked{% endif %} /> 12+
+      <input type="radio" name="age_recommendation" value="13+" {% if item.age_recommendation == '13+' %}checked{% endif %} /> 13+
+      <input type="radio" name="age_recommendation" value="14+" {% if item.age_recommendation == '14+' %}checked{% endif %} /> 14+
+      <input type="radio" name="age_recommendation" value="17+" {% if item.age_recommendation == '17+' %}checked{% endif %} /> 17+
+      <input type="radio" name="age_recommendation" value="18+" {% if item.age_recommendation == '18+' %}checked{% endif %} /> 18+
+      <input type="radio" name="age_recommendation" value="21+" {% if item.age_recommendation == '21+' %}checked{% endif %} /> 21+
+    </p>
+    <p>
+      Vaikeustaso <br />
+      <input type="radio" name="difficulty_level" value="Erittäin helppo" {% if item.difficulty_level == 'Erittäin helppo' %}checked{% endif %} /> Erittäin helppo
+      <input type="radio" name="difficulty_level" value="Helppo" {% if item.difficulty_level == 'Helppo' %}checked{% endif %} /> Helppo
+      <input type="radio" name="difficulty_level" value="Keskitaso" {% if item.difficulty_level == 'Keskitaso' %}checked{% endif %} /> Keskitaso
+      <input type="radio" name="difficulty_level" value="Vaikea" {% if item.difficulty_level == 'Vaikea' %}checked{% endif %} /> Vaikea
+      <input type="radio" name="difficulty_level" value="Erittäin vaikea" {% if item.difficulty_level == 'Erittäin vaikea' %}checked{% endif %} /> Erittäin vaikea
+    </p>
+    <p>
+      Arvosana <br />
+      <input type="radio" name="rating" value="*" {% if item.rating == '*' %}checked{% endif %} /> *
+      <input type="radio" name="rating" value="**" {% if item.rating == '**' %}checked{% endif %} /> **
+      <input type="radio" name="rating" value="***" {% if item.rating == '***' %}checked{% endif %} /> ***
+      <input type="radio" name="rating" value="****" {% if item.rating == '****' %}checked{% endif %} /> ****
+      <input type="radio" name="rating" value="*****" {% if item.rating == '*****' %}checked{% endif %} /> *****
+    </p>
+    <input type="submit" value="Päivitä tiedot"/>
+  </form>
+</body>
+
+</html>

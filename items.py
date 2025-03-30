@@ -10,12 +10,14 @@ def get_items():
     return db.query(sql)
 
 def get_item(item_id):
-    sql = """SELECT items.title,
+    sql = """SELECT items.id,
+                    items.title,
                     items.min_players,
                     items.max_players,
                     items.age_recommendation,
                     items.difficulty_level,
                     items.rating,
+                    users.id user_id,
                     users.username
              FROM items, users
              WHERE items.user_id = users.id AND
