@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Lisää uusi peli pelikirjastoon</title>
+</head>
+
+<body>
+  <h1>Uusi peli</h1>
+  <form action="/create_item" method="post">
+    <p>
+      Pelin nimi: <br />
+      <input type="text" name="title" size="25"/>
+    </p>
+    <p>
+      Minimipelaajamäärä <br />
+      <input type="radio" name="min_players" value="A" /> 1
+      <input type="radio" name="min_players" value="B" /> 2
+      <input type="radio" name="min_players" value="C" /> 3
+      <input type="radio" name="min_players" value="D" /> 4
+    </p>
+    <p>
+      Maksimipelaajmäärä <br />
+      <input type="radio" name="max_players" value="A" /> 2
+      <input type="radio" name="max_players" value="B" /> 3
+      <input type="radio" name="max_players" value="C" /> 4
+      <input type="radio" name="max_players" value="D" /> 5
+      <input type="radio" name="max_players" value="A" /> 6
+      <input type="radio" name="max_players" value="B" /> 8
+      <input type="radio" name="max_players" value="C" /> 10
+      <input type="radio" name="max_players" value="D" /> 12
+      <input type="radio" name="max_players" value="C" /> 16
+      <input type="radio" name="max_players" value="D" /> 99
+    </p>
+    <p>
+        Ikäsuositus <br />
+        <input type="radio" name="age_recommendation" value="5+" /> 5+
+        <input type="radio" name="age_recommendation" value="6+" /> 6+
+        <input type="radio" name="age_recommendation" value="7+" /> 7+
+        <input type="radio" name="age_recommendation" value="8+" /> 8+
+        <input type="radio" name="age_recommendation" value="9+" /> 9+
+        <input type="radio" name="age_recommendation" value="10+" /> 10+
+        <input type="radio" name="age_recommendation" value="12+" /> 12+
+        <input type="radio" name="age_recommendation" value="13+" /> 13+
+        <input type="radio" name="age_recommendation" value="14+" /> 14+
+        <input type="radio" name="age_recommendation" value="17+" /> 17+
+        <input type="radio" name="age_recommendation" value="18+" /> 18+
+        <input type="radio" name="age_recommendation" value="21+" /> 21+
+    </p>
+    <p>
+        Vaikeustaso <br />
+        <input type="radio" name="difficulty_level" value="Erittäin helppo" /> Erittäin helppo
+        <input type="radio" name="difficulty_level" value="Helppo" /> Helppo
+        <input type="radio" name="difficulty_level" value="Keskitaso" /> Keskitaso
+        <input type="radio" name="difficulty_level" value="Vaikea" /> Vaikea
+        <input type="radio" name="difficulty_level" value="Erittäin vaikea" /> Erittäin vaikea
+    </p>
+    <p>
+        Arvosana <br />
+        <input type="radio" name="rating" value="*" /> *
+        <input type="radio" name="rating" value="**" /> **
+        <input type="radio" name="rating" value="***" /> ***
+        <input type="radio" name="rating" value="****" /> ****
+        <input type="radio" name="rating" value="*****" /> *****
+    </p>
+    <input type="submit" value="Lisää uusi peli" />
+  </form>
+</body>
+
+</html>
