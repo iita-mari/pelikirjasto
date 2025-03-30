@@ -15,3 +15,9 @@ Sovelluksen tarkoituksena on mahdollistaa käyttäjälle lista hänen omistamist
 * Käyttäjä voi etsiä pelejä hakemalla peliä nimellä, pelaajamäärällä tai ikäsuosituksella
 * Käyttäjä voi määrittää pelille vaikeustason ja arvosanan
 * Pelejä voi järjestää vaikeustason tai arvosanan mukaan
+
+## Sovelluksen nykytilanne
+Välipalautus 2:n tavoitteiden mukaisesti:
+- Käyttäjä pystyy luomaan tunnuksen ja kirjautumaan sisään sovellukseen.
+- Käyttäjä pystyy lisäämään ja muokkaamaan tietokohteita.
+- README.md-tiedosto kuvaa, mikä on sovelluksen nykyinen tilanne.
