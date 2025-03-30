@@ -4,3 +4,20 @@ def add_item(title, min_players, max_players, age_recommendation, difficulty_lev
     sql = """INSERT INTO items (title, min_players, max_players, age_recommendation, difficulty_level, rating, user_id)
             VALUES (?, ?, ?, ?, ?, ?, ?)"""
     db.execute(sql, [title, min_players, max_players, age_recommendation, difficulty_level, rating, user_id])
+
+def get_items():
+    sql = "SELECT id, title FROM items ORDER BY id DESC"
+    return db.query(sql)
+
+def get_item(item_id):
+    sql = """SELECT items.title,
+                    items.min_players,
+                    items.max_players,
+                    items.age_recommendation,
+                    items.difficulty_level,
+                    items.rating,
+                    users.username
+             FROM items, users
+             WHERE items.user_id = users.id AND
+                   items.id = ?"""
+    return db.query(sql, [item_id]) [0]

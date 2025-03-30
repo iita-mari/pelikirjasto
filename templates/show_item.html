@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>{{ item.title }}</title>
+</head>
+
+<body>
+  <h1>{{ item.title }}</h1>
+
+  <h2>Pelin tiedot</h2>
+
+  <p>
+    Minimipelaajamäärä: {{ item.min_players }}
+  </p>
+  <p>
+    Maksimipelaajamäärä: {{ item.max_players }}
+  </p>
+  <p>
+    Suositusikä: {{ item.age_recommendation }}
+  </p>
+
+  <h2>Arvostelu</h2>
+
+  <p>
+    Arvostelija: {{ item.username }}
+  </p>
+  <p>
+   Vaikeustaso: {{ item.difficulty_level }}
+  </p>
+  <p>
+    Arvosana: {{ item.rating }}
+  </p>
+  <p>
+    <a href="/">Takaisin</a>
+  </p>
+</body>
+
+</html>
