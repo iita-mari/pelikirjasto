@@ -23,3 +23,13 @@ def get_item(item_id):
              WHERE items.user_id = users.id AND
                    items.id = ?"""
     return db.query(sql, [item_id]) [0]
+
+def update_item(item_id, title, min_players, max_players, age_recommendation, difficulty_level, rating):
+    sql = """UPDATE items SET title = ?,
+                              min_players = ?,
+                              max_players = ?,
+                              age_recommendation = ?,
+                              difficulty_level = ?,
+                              rating = ?
+                          WHERE id = ?"""
+    db.execute(sql, [title, min_players, max_players, age_recommendation, difficulty_level, rating, item_id])

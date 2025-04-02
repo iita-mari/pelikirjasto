@@ -62,7 +62,8 @@
       <input type="radio" name="rating" value="****" {% if item.rating == '****' %}checked{% endif %} /> ****
       <input type="radio" name="rating" value="*****" {% if item.rating == '*****' %}checked{% endif %} /> *****
     </p>
-    <input type="submit" value="Päivitä tiedot"/>
+    <input type="hidden" name="item_id" value="{{ item.id }}" />
+    <input type="submit" value="Päivitä tiedot" />
   </form>
 </body>
 

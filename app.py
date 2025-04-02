@@ -42,6 +42,20 @@ def edit_item(item_id):
     item = items.get_item(item_id)
     return render_template("edit_item.html", item=item)
 
+@app.route("/update_item", methods=["POST"])
+def update_item():
+    item_id = request.form["item_id"]
+    title = request.form["title"]
+    min_players = request.form["min_players"]
+    max_players = request.form["max_players"]
+    age_recommendation = request.form["age_recommendation"]
+    difficulty_level = request.form["difficulty_level"]
+    rating = request.form["rating"]
+
+    items.update_item(item_id, title, min_players, max_players, age_recommendation, difficulty_level, rating)
+
+    return redirect("/item/" + str(item_id))
+
 @app.route("/register")
 def register():
     return render_template("register.html")
