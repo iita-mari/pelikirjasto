@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Poista pelin tiedot</title>
+</head>
+
+<body>
+  <h1>Poista pelin tiedot</h1>
+  <p>Peli: {{item.title }}</p>
+  <p>Haluatko varmasti poistaa tämän pelin tiedot?</p>
+  <form action="/remove_item/{{ item.id }}" method="post">
+    <input type="submit" name="remove" value="Poista tiedot">
+    <input type="submit" name="back" value="Palaa takaisin">
+  </form>
+</body>
+
+</html>
