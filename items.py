@@ -3,7 +3,14 @@ import db
 def add_item(title, min_players, max_players, age_recommendation, difficulty_level, rating, user_id):
     sql = """INSERT INTO items (title, min_players, max_players, age_recommendation, difficulty_level, rating, user_id)
             VALUES (?, ?, ?, ?, ?, ?, ?)"""
-    db.execute(sql, [title, min_players, max_players, age_recommendation, difficulty_level, rating, user_id])
+    db.execute(sql,
+               [title,
+                min_players,
+                max_players,
+                age_recommendation,
+                difficulty_level,
+                rating,
+                user_id])
 
 def get_items():
     sql = "SELECT id, title FROM items ORDER BY id DESC"
@@ -32,8 +39,24 @@ def update_item(item_id, title, min_players, max_players, age_recommendation, di
                               difficulty_level = ?,
                               rating = ?
                           WHERE id = ?"""
-    db.execute(sql, [title, min_players, max_players, age_recommendation, difficulty_level, rating, item_id])
+    db.execute(sql,
+               [title,
+                min_players,
+                max_players,
+                age_recommendation,
+                difficulty_level,
+                rating,
+                item_id])
 
 def remove_item(item_id):
     sql = "DELETE FROM items WHERE id = ?"
     db.execute(sql, [item_id])
+
+def find_items(query):
+    sql = """SELECT id, title
+             FROM items
+             WHERE title LIKE ?
+             ORDER BY title DESC"""
+
+    like = "%" + query + "%"
+    return db.query(sql, [like])
