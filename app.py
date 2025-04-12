@@ -45,11 +45,23 @@ def create_item():
     require_login()
 
     title = request.form["title"]
+    if not title or len(title) > 50:
+        abort(403)
     min_players = request.form["min_players"]
+    if not min_players:
+        abort(403)
     max_players = request.form["max_players"]
+    if not max_players:
+        abort(403)
     age_recommendation = request.form["age_recommendation"]
+    if not age_recommendation:
+        abort(403)
     difficulty_level = request.form["difficulty_level"]
+    if not difficulty_level:
+        abort(403)
     rating = request.form["rating"]
+    if not rating:
+        abort(403)
     user_id = session["user_id"]
 
     items.add_item(title, min_players, max_players, age_recommendation, difficulty_level, rating, user_id)
