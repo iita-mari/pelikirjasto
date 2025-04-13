@@ -29,9 +29,11 @@ Välipalautus 2:n tavoitteiden mukaisesti:
 - Käyttäjä pystyy lisäämään ja muokkaamaan tietokohteita.
 - Käyttäjä näkee sovellukseen lisätyt tietokohteet.
 
-## Sovelluksen käynnistäminen
-Luo ja käynnistä virtuaaliympäristö:
-`$ python3 -m venv venv`
-`$ source venv/bin/activate`
-Tämän jälkeen asenna flask-riippuvuus:
-`$ pip install flask`
+## Projektin käynnistäminen
+- Luo ja käynnistä virtuaaliympäristö:
+  - `$ python3 -m venv venv`
+  - `$ source venv/bin/activate`
+- Tämän jälkeen asenna flask-riippuvuus:
+  - `$ pip install flask`
+- Sovelluksen käynnistäminen:
+  - `flask run`
