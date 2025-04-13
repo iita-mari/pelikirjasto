@@ -35,18 +35,34 @@
     </p>
     <p>
       Ikäsuositus<br />
-      <input type="radio" name="age_recommendation" value="5+" required /> 5+
-      <input type="radio" name="age_recommendation" value="6+" required /> 6+
-      <input type="radio" name="age_recommendation" value="7+" required /> 7+
-      <input type="radio" name="age_recommendation" value="8+" required /> 8+
-      <input type="radio" name="age_recommendation" value="9+" required /> 9+
-      <input type="radio" name="age_recommendation" value="10+" required /> 10+
-      <input type="radio" name="age_recommendation" value="12+" required /> 12+
-      <input type="radio" name="age_recommendation" value="13+" required /> 13+
-      <input type="radio" name="age_recommendation" value="14+" required /> 14+
-      <input type="radio" name="age_recommendation" value="17+" required /> 17+
-      <input type="radio" name="age_recommendation" value="18+" required /> 18+
-      <input type="radio" name="age_recommendation" value="21+" required /> 21+
+      <select name="age_recommendation", required>
+        <option value="valitse">(valitse)</option>
+        <option value="5+">5+</option>
+        <option value="6+">6+</option>
+        <option value="7+">7+</option>
+        <option value="8+">8+</option>
+        <option value="9+">9+</option>
+        <option value="10+">10+</option>
+        <option value="12+">12+</option>
+        <option value="13+">13+</option>
+        <option value="14+">14+</option>
+        <option value="17+">17+</option>
+        <option value="18+">18+</option>
+        <option value="21+">21+</option>
+      </select>
+    </p>
+    <p>
+      Pelin kesto<br />
+      <select name="duration" required>
+        <option value="valitse">(valitse)</option>
+        <option value="15 min">15 min</option>
+        <option value="30 min">30 min</option>
+        <option value="45 min">45 min</option>
+        <option value="1 tunti">1 tunti</option>
+        <option value="1,5 tuntia">1,5 tuntia</option>
+        <option value="2 tuntia">2 tuntia</option>
+        <option value="enemmän">enemmän</option>
+      </select>
     </p>
     <h2>Arvio pelistä</h2>
     <p>

@@ -42,7 +42,8 @@ def show_item(item_id):
     item = items.get_item(item_id)
     if not item:
         abort(404)
-    return render_template("show_item.html", item=item)
+    classes = items.get_classes(item_id)
+    return render_template("show_item.html", item=item, classes=classes)
 
 @app.route("/new_item")
 def new_item():
@@ -65,6 +66,9 @@ def create_item():
     age_recommendation = request.form["age_recommendation"]
     if not age_recommendation:
         abort(403)
+    duration = request.form["duration"]
+    if not duration:
+        abort(403)
     difficulty_level = request.form["difficulty_level"]
     if not difficulty_level:
         abort(403)
@@ -73,7 +77,15 @@ def create_item():
         abort(403)
     user_id = session["user_id"]
 
-    items.add_item(title, min_players, max_players, age_recommendation, difficulty_level, rating, user_id)
+    classes = []
+    classes.append(("Minimipelaajamäärä", min_players))
+    classes.append(("Maksimipelaajamäärä", max_players))
+    classes.append(("Ikäsuositus", age_recommendation))
+    classes.append(("Pelin kesto", duration))
+    classes.append(("Vaikeustaso", difficulty_level))
+    classes.append(("Arvosana", rating))
+
+    items.add_item(title, min_players, max_players, age_recommendation, duration, difficulty_level, rating, user_id, classes)
 
     return redirect("/")
 
@@ -85,6 +97,7 @@ def edit_item(item_id):
         abort(404)
     if item["user_id"] != session["user_id"]:
         abort(403)
+
     return render_template("edit_item.html", item=item)
 
 @app.route("/update_item", methods=["POST"])
@@ -101,10 +114,11 @@ def update_item():
     min_players = request.form["min_players"]
     max_players = request.form["max_players"]
     age_recommendation = request.form["age_recommendation"]
+    duration = request.form["duration"]
     difficulty_level = request.form["difficulty_level"]
     rating = request.form["rating"]
 
-    items.update_item(item_id, title, min_players, max_players, age_recommendation, difficulty_level, rating)
+    items.update_item(item_id, title, min_players, max_players, age_recommendation, duration, difficulty_level, rating)
 
     return redirect("/item/" + str(item_id))
 

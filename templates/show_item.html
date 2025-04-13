@@ -25,6 +25,9 @@
   <p>
     Ikäsuositus: {{ item.age_recommendation }}
   </p>
+  <p>
+    Kesto: {{ item.duration }}
+  </p>
 
   <h2>Arvio</h2>
 
@@ -37,6 +40,16 @@
   <p>
     Arvosana: {{ item.rating }}
   </p>
+  {% if classes %}
+  <p>
+    Luokat:
+    <ul>
+      {% for class in classes %}
+      <li>{{ class.title }}: {{ class.value }}</li>
+      {% endfor %}
+    </ul>
+  </p>
+  {% endfor %}
   <p>
     <a href="/">Takaisin</a>
   </p>

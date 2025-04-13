@@ -32,19 +32,35 @@
       <input type="radio" name="max_players" value="16" {% if item.max_players == 16 %}checked{% endif %} /> 16
       <input type="radio" name="max_players" value="99" {% if item.max_players == 99 %}checked{% endif %} /> 99
     <p>
-      Ikäsuositus <br />
-      <input type="radio" name="age_recommendation" value="5+" {% if item.age_recommendation == '5+' %}checked{% endif %} /> 5+
-      <input type="radio" name="age_recommendation" value="6+" {% if item.age_recommendation == '6+' %}checked{% endif %} /> 6+
-      <input type="radio" name="age_recommendation" value="7+" {% if item.age_recommendation == '7+' %}checked{% endif %} /> 7+
-      <input type="radio" name="age_recommendation" value="8+" {% if item.age_recommendation == '8+' %}checked{% endif %} /> 8+
-      <input type="radio" name="age_recommendation" value="9+" {% if item.age_recommendation == '9+' %}checked{% endif %} /> 9+
-      <input type="radio" name="age_recommendation" value="10+" {% if item.age_recommendation == '10+' %}checked{% endif %} /> 10+
-      <input type="radio" name="age_recommendation" value="12+" {% if item.age_recommendation == '12+' %}checked{% endif %} /> 12+
-      <input type="radio" name="age_recommendation" value="13+" {% if item.age_recommendation == '13+' %}checked{% endif %} /> 13+
-      <input type="radio" name="age_recommendation" value="14+" {% if item.age_recommendation == '14+' %}checked{% endif %} /> 14+
-      <input type="radio" name="age_recommendation" value="17+" {% if item.age_recommendation == '17+' %}checked{% endif %} /> 17+
-      <input type="radio" name="age_recommendation" value="18+" {% if item.age_recommendation == '18+' %}checked{% endif %} /> 18+
-      <input type="radio" name="age_recommendation" value="21+" {% if item.age_recommendation == '21+' %}checked{% endif %} /> 21+
+      Ikäsuositus<br />
+      <select name="age_recommendation">
+        <option value="valitse" required>(valitse)</option>
+        <option value="5+" required>5+</option>
+        <option value="6+" required>6+</option>
+        <option value="7+" required>7+</option>
+        <option value="8+" required>8+</option>
+        <option value="9+" required>9+</option>
+        <option value="10+" required>10+</option>
+        <option value="12+" required>12+</option>
+        <option value="13+" required>13+</option>
+        <option value="14+" required>14+</option>
+        <option value="17+" required>17+</option>
+        <option value="18+" required>18+</option>
+        <option value="21+" required>21+</option>
+      </select>
+    </p>
+    <p>
+      Pelin kesto<br />
+      <select name="duration">
+        <option value="valitse" required>(valitse)</option>
+        <option value="15 min" required>15 min</option>
+        <option value="30 min" required>30 min</option>
+        <option value="45 min" required>45 min</option>
+        <option value="1 tunti" required>1 tunti</option>
+        <option value="1,5 tuntia" required>1,5 tuntia</option>
+        <option value="2 tuntia" required>2 tuntia</option>
+        <option value="enemmän" required>enemmän</option>
+      </select>
     </p>
     <p>
       Vaikeustaso <br />

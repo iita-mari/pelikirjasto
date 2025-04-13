@@ -1,16 +1,27 @@
 import db
 
-def add_item(title, min_players, max_players, age_recommendation, difficulty_level, rating, user_id):
-    sql = """INSERT INTO items (title, min_players, max_players, age_recommendation, difficulty_level, rating, user_id)
-            VALUES (?, ?, ?, ?, ?, ?, ?)"""
+def add_item(title, min_players, max_players, age_recommendation, duration, difficulty_level, rating, user_id, classes):
+    sql = """INSERT INTO items (title, min_players, max_players, age_recommendation, duration, difficulty_level, rating, user_id)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?)"""
     db.execute(sql,
                [title,
                 min_players,
                 max_players,
                 age_recommendation,
+                duration,
                 difficulty_level,
                 rating,
                 user_id])
+
+    item_id = db.last_insert_id()
+
+    sql = "INSERT INTO item_classes (item_id, title, value) VALUES (?, ?, ?)"
+    for title, value in classes:
+        db.execute(sql, [item_id, title, value])
+
+def get_classes(item_id):
+    sql = "SELECT title, value FROM item_classes WHERE item_id = ?"
+    return db.query(sql, [item_id])
 
 def get_items():
     sql = "SELECT id, title FROM items ORDER BY id DESC"
@@ -23,6 +34,7 @@ def get_item(item_id):
                     items.max_players,
                     items.age_recommendation,
                     items.difficulty_level,
+                    items.duration,
                     items.rating,
                     users.id user_id,
                     users.username
@@ -32,11 +44,12 @@ def get_item(item_id):
     result = db.query(sql, [item_id])
     return result[0] if result else None
 
-def update_item(item_id, title, min_players, max_players, age_recommendation, difficulty_level, rating):
+def update_item(item_id, title, min_players, max_players, age_recommendation, duration, difficulty_level, rating):
     sql = """UPDATE items SET title = ?,
                               min_players = ?,
                               max_players = ?,
                               age_recommendation = ?,
+                              duration = ?,
                               difficulty_level = ?,
                               rating = ?
                           WHERE id = ?"""
@@ -46,6 +59,7 @@ def update_item(item_id, title, min_players, max_players, age_recommendation, di
                 max_players,
                 age_recommendation,
                 difficulty_level,
+                duration,
                 rating,
                 item_id])
 
