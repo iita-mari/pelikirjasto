@@ -21,13 +21,14 @@ Sovelluksen tarkoituksena on mahdollistaa käyttäjälle lista hänen omistamist
 ## Sovelluksen nykytilanne välitavoitteiden mukaan
 Välipalautus 3:n tavoitteiden mukaisesti:
 - Sovelluksessa on (alkeellinen) käyttäjäsivu, joka näyttää tällä hetkellä vain sovellukseen lisättyjen pelien määrän
-- Tietokohteilla eli peleillä on useampi luokittelu ja luokittelut ovat tietokannassa
+- Tietokohteilla eli peleillä on useampi luokittelu ja luokittelut ovat tietokannassa.
 - README.md-tiedosto kuvaa, mikä on sovelluksen nykyinen tilanne.
 
 Välipalautus 2:n tavoitteiden mukaisesti:
 - Käyttäjä pystyy luomaan tunnuksen ja kirjautumaan sisään sovellukseen.
 - Käyttäjä pystyy lisäämään ja muokkaamaan tietokohteita.
 - Käyttäjä näkee sovellukseen lisätyt tietokohteet.
+- Käyttäjä pystyy etsimään tietokohteita hakusanalla.
 
 ## Projektin käynnistäminen
 - Luo ja käynnistä virtuaaliympäristö:
