@@ -58,8 +58,8 @@ def update_item(item_id, title, min_players, max_players, age_recommendation, du
                 min_players,
                 max_players,
                 age_recommendation,
-                difficulty_level,
                 duration,
+                difficulty_level,
                 rating,
                 item_id])
 
