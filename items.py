@@ -1,14 +1,22 @@
 import db
 
-def add_item(title, min_players, max_players, age_recommendation, duration, difficulty_level, rating, user_id, classes):
-    sql = """INSERT INTO items (title, min_players, max_players, age_recommendation, duration, difficulty_level, rating, user_id)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?)"""
+def get_all_classes():
+    sql = "SELECT title, value FROM classes ORDER BY id"
+    result = db.query(sql)
+
+    classes = {}
+    for title, value in result:
+        classes[title] = []
+    for title, value in result:
+        classes[title].append(value)
+
+    return classes
+
+def add_item(title, difficulty_level, rating, user_id, classes):
+    sql = """INSERT INTO items (title, difficulty_level, rating, user_id)
+            VALUES (?, ?, ?, ?)"""
     db.execute(sql,
                [title,
-                min_players,
-                max_players,
-                age_recommendation,
-                duration,
                 difficulty_level,
                 rating,
                 user_id])

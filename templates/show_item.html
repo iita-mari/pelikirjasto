@@ -15,19 +15,13 @@
   {% endif %}
 
   <h2>Pelin tiedot</h2>
-
-  <p>
-    Minimipelaajamäärä: {{ item.min_players }}
-  </p>
-  <p>
-    Maksimipelaajamäärä: {{ item.max_players }}
-  </p>
-  <p>
-    Ikäsuositus: {{ item.age_recommendation }}
-  </p>
-  <p>
-    Kesto: {{ item.duration }}
-  </p>
+    {% if classes %}
+  <ul>
+    {% for class in classes %}
+    <li>{{ class.title }}: {{ class.value }}</li>
+    {% endfor %}
+    </ul>
+    {% endif %}
 
   <h2>Arvio</h2>
 
@@ -40,16 +34,6 @@
   <p>
     Arvosana: {{ item.rating }}
   </p>
-  {% if classes %}
-  <p>
-    Luokat:
-    <ul>
-      {% for class in classes %}
-      <li>{{ class.title }}: {{ class.value }}</li>
-      {% endfor %}
-    </ul>
-  </p>
-  {% endif %}
   <p>
     <a href="/">Takaisin</a>
   </p>

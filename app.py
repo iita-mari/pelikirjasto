@@ -48,7 +48,8 @@ def show_item(item_id):
 @app.route("/new_item")
 def new_item():
     require_login()
-    return render_template("new_item.html")
+    classes = items.get_all_classes()
+    return render_template("new_item.html", classes=classes)
 
 @app.route("/create_item", methods=["POST"])
 def create_item():
@@ -57,35 +58,16 @@ def create_item():
     title = request.form["title"]
     if not title or len(title) > 50:
         abort(403)
-    min_players = request.form["min_players"]
-    if not min_players:
-        abort(403)
-    max_players = request.form["max_players"]
-    if not max_players:
-        abort(403)
-    age_recommendation = request.form["age_recommendation"]
-    if not age_recommendation:
-        abort(403)
-    duration = request.form["duration"]
-    if not duration:
-        abort(403)
     difficulty_level = request.form["difficulty_level"]
-    if not difficulty_level:
-        abort(403)
     rating = request.form["rating"]
-    if not rating:
-        abort(403)
     user_id = session["user_id"]
 
     classes = []
-    classes.append(("Minimipelaajamäärä", min_players))
-    classes.append(("Maksimipelaajamäärä", max_players))
-    classes.append(("Ikäsuositus", age_recommendation))
-    classes.append(("Pelin kesto", duration))
-    classes.append(("Vaikeustaso", difficulty_level))
-    classes.append(("Arvosana", rating))
-
-    items.add_item(title, min_players, max_players, age_recommendation, duration, difficulty_level, rating, user_id, classes)
+    for entry in request.form.getlist("classes"):
+        if entry:
+            parts = entry.split(":")
+            classes.append((parts[0], parts[1]))
+    items.add_item(title, difficulty_level, rating, user_id, classes)
 
     return redirect("/")
 
