@@ -10,58 +10,25 @@
   <form action="/update_item" method="post">
     <p>
       Pelin nimi: <br />
-      <input type="text" name="title" size="25" value="{{ item.title }}"/>
+      <input type="text" name="title" maxlength="50" size="25" value="{{ item.title }}"/>
     </p>
+    <input type="hidden" name="item_id" value="{{ item.id }}" />
     <p>
-      Minimipelaajamäärä <br />
-      <input type="radio" name="min_players" value="1" {% if item.min_players == 1 %}checked{% endif %} /> 1
-      <input type="radio" name="min_players" value="2" {% if item.min_players == 2 %}checked{% endif %} /> 2
-      <input type="radio" name="min_players" value="3" {% if item.min_players == 3 %}checked{% endif %} /> 3
-      <input type="radio" name="min_players" value="4" {% if item.min_players == 4 %}checked{% endif %} /> 4
-    </p>
+    {% for class in all_classes %}
     <p>
-      Maksimipelaajamäärä <br />
-      <input type="radio" name="max_players" value="2" {% if item.max_players == 2 %}checked{% endif %} /> 2
-      <input type="radio" name="max_players" value="3" {% if item.max_players == 3 %}checked{% endif %} /> 3
-      <input type="radio" name="max_players" value="4" {% if item.max_players == 4 %}checked{% endif %} /> 4
-      <input type="radio" name="max_players" value="5" {% if item.max_players == 5 %}checked{% endif %} /> 5
-      <input type="radio" name="max_players" value="6" {% if item.max_players == 6 %}checked{% endif %} /> 6
-      <input type="radio" name="max_players" value="8" {% if item.max_players == 8 %}checked{% endif %} /> 8
-      <input type="radio" name="max_players" value="10" {% if item.max_players == 10 %}checked{% endif %} /> 10
-      <input type="radio" name="max_players" value="12" {% if item.max_players == 12 %}checked{% endif %} /> 12
-      <input type="radio" name="max_players" value="16" {% if item.max_players == 16 %}checked{% endif %} /> 16
-      <input type="radio" name="max_players" value="99" {% if item.max_players == 99 %}checked{% endif %} /> 99
-    <p>
-      Ikäsuositus<br />
-      <select name="age_recommendation">
-        <option value="valitse" required>(valitse)</option>
-        <option value="5+" required>5+</option>
-        <option value="6+" required>6+</option>
-        <option value="7+" required>7+</option>
-        <option value="8+" required>8+</option>
-        <option value="9+" required>9+</option>
-        <option value="10+" required>10+</option>
-        <option value="12+" required>12+</option>
-        <option value="13+" required>13+</option>
-        <option value="14+" required>14+</option>
-        <option value="17+" required>17+</option>
-        <option value="18+" required>18+</option>
-        <option value="21+" required>21+</option>
+      {{ class }}: <br />
+      <select name="classes">
+        <option value="">(valitse)</option>
+      {% for option in all_classes[class] %}
+        {% if classes[class] == option %}
+        <option value="{{ class }}:{{ option }}" selected>{{ option }}</option>
+        {% else %}
+        <option value="{{ class }}:{{ option }}">{{ option }}</option>
+        {% endif %}
+      {% endfor %}
       </select>
     </p>
-    <p>
-      Pelin kesto<br />
-      <select name="duration">
-        <option value="valitse" required>(valitse)</option>
-        <option value="15 min" required>15 min</option>
-        <option value="30 min" required>30 min</option>
-        <option value="45 min" required>45 min</option>
-        <option value="1 tunti" required>1 tunti</option>
-        <option value="1,5 tuntia" required>1,5 tuntia</option>
-        <option value="2 tuntia" required>2 tuntia</option>
-        <option value="enemmän" required>enemmän</option>
-      </select>
-    </p>
+    {% endfor %}
     <p>
       Vaikeustaso <br />
       <input type="radio" name="difficulty_level" value="Erittäin helppo" {% if item.difficulty_level == 'Erittäin helppo' %}checked{% endif %} /> Erittäin helppo
@@ -78,7 +45,6 @@
       <input type="radio" name="rating" value="****" {% if item.rating == '****' %}checked{% endif %} /> ****
       <input type="radio" name="rating" value="*****" {% if item.rating == '*****' %}checked{% endif %} /> *****
     </p>
-    <input type="hidden" name="item_id" value="{{ item.id }}" />
     <input type="submit" value="Päivitä tiedot" />
   </form>
 </body>

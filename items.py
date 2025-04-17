@@ -52,24 +52,23 @@ def get_item(item_id):
     result = db.query(sql, [item_id])
     return result[0] if result else None
 
-def update_item(item_id, title, min_players, max_players, age_recommendation, duration, difficulty_level, rating):
+def update_item(item_id, title, difficulty_level, rating, classes):
     sql = """UPDATE items SET title = ?,
-                              min_players = ?,
-                              max_players = ?,
-                              age_recommendation = ?,
-                              duration = ?,
                               difficulty_level = ?,
                               rating = ?
                           WHERE id = ?"""
     db.execute(sql,
                [title,
-                min_players,
-                max_players,
-                age_recommendation,
-                duration,
                 difficulty_level,
                 rating,
                 item_id])
+
+    sql = "DELETE FROM item_classes WHERE item_id = ?"
+    db.execute(sql, [item_id])
+
+    sql = "INSERT INTO item_classes (item_id, title, value) VALUES (?, ?, ?)"
+    for title, value in classes:
+        db.execute(sql, [item_id, title, value])
 
 def remove_item(item_id):
     sql = "DELETE FROM items WHERE id = ?"

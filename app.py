@@ -67,6 +67,7 @@ def create_item():
         if entry:
             parts = entry.split(":")
             classes.append((parts[0], parts[1]))
+
     items.add_item(title, difficulty_level, rating, user_id, classes)
 
     return redirect("/")
@@ -80,7 +81,15 @@ def edit_item(item_id):
     if item["user_id"] != session["user_id"]:
         abort(403)
 
-    return render_template("edit_item.html", item=item)
+    all_classes = items.get_all_classes()
+    classes = {}
+    for my_class in all_classes:
+        classes[my_class] = ""
+    for entry in items.get_classes(item_id):
+        classes[entry["title"]] = entry["value"]
+
+    return render_template("edit_item.html", item=item, classes=classes,
+    all_classes=all_classes)
 
 @app.route("/update_item", methods=["POST"])
 def update_item():
@@ -93,14 +102,18 @@ def update_item():
         abort(403)
 
     title = request.form["title"]
-    min_players = request.form["min_players"]
-    max_players = request.form["max_players"]
-    age_recommendation = request.form["age_recommendation"]
-    duration = request.form["duration"]
+    if not title or len(title) > 50:
+        abort(403)
     difficulty_level = request.form["difficulty_level"]
     rating = request.form["rating"]
 
-    items.update_item(item_id, title, min_players, max_players, age_recommendation, duration, difficulty_level, rating)
+    classes = []
+    for entry in request.form.getlist("classes"):
+        if entry:
+            parts = entry.split(":")
+            classes.append((parts[0], parts[1]))
+
+    items.update_item(item_id, title, difficulty_level, rating, classes)
 
     return redirect("/item/" + str(item_id))
 
