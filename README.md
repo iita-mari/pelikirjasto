@@ -38,3 +38,7 @@ Välipalautus 2:n tavoitteiden mukaisesti:
   - `$ pip install flask`
 - Sovelluksen käynnistäminen:
   - `flask run`
+ 
+Psst! Tietokannan alustaminen (ATM) tarvittaessa:
+  - `sqlite3 database.db < schema.sql`
+  - `sqlite3 database.db < init.sql`
