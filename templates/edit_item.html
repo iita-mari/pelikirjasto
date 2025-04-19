@@ -1,52 +1,47 @@
-<!DOCTYPE html>
-<html>
+{% extends "layout.html" %}
 
-<head>
-  <title>Muokkaa pelin tietoja</title>
-</head>
+{% block title %}Muokkaa pelin tietoja{% endblock %}
 
-<body>
-  <h1>Muokkaa pelin tietoja</h1>
-  <form action="/update_item" method="post">
-    <p>
-      Pelin nimi: <br />
-      <input type="text" name="title" maxlength="50" size="25" value="{{ item.title }}"/>
-    </p>
-    <input type="hidden" name="item_id" value="{{ item.id }}" />
-    <p>
-    {% for class in all_classes %}
-    <p>
-      {{ class }}: <br />
-      <select name="classes">
-        <option value="">(valitse)</option>
-      {% for option in all_classes[class] %}
-        {% if classes[class] == option %}
-        <option value="{{ class }}:{{ option }}" selected>{{ option }}</option>
-        {% else %}
-        <option value="{{ class }}:{{ option }}">{{ option }}</option>
-        {% endif %}
-      {% endfor %}
-      </select>
-    </p>
+{% block content %}
+<h2>Muokkaa pelin tietoja</h2>
+<form action="/update_item" method="post">
+  <p>
+    Pelin nimi: <br />
+    <input type="text" name="title" maxlength="50" size="25" value="{{ item.title }}"/>
+  </p>
+  <input type="hidden" name="item_id" value="{{ item.id }}" />
+  <p>
+  {% for class in all_classes %}
+  <p>
+    {{ class }}: <br />
+    <select name="classes">
+      <option value="">(valitse)</option>
+    {% for option in all_classes[class] %}
+      {% if classes[class] == option %}
+      <option value="{{ class }}:{{ option }}" selected>{{ option }}</option>
+      {% else %}
+      <option value="{{ class }}:{{ option }}">{{ option }}</option>
+      {% endif %}
     {% endfor %}
-    <p>
-      Vaikeustaso <br />
-      <input type="radio" name="difficulty_level" value="Erittäin helppo" {% if item.difficulty_level == 'Erittäin helppo' %}checked{% endif %} /> Erittäin helppo
-      <input type="radio" name="difficulty_level" value="Helppo" {% if item.difficulty_level == 'Helppo' %}checked{% endif %} /> Helppo
-      <input type="radio" name="difficulty_level" value="Keskitaso" {% if item.difficulty_level == 'Keskitaso' %}checked{% endif %} /> Keskitaso
-      <input type="radio" name="difficulty_level" value="Vaikea" {% if item.difficulty_level == 'Vaikea' %}checked{% endif %} /> Vaikea
-      <input type="radio" name="difficulty_level" value="Erittäin vaikea" {% if item.difficulty_level == 'Erittäin vaikea' %}checked{% endif %} /> Erittäin vaikea
-    </p>
-    <p>
-      Arvosana <br />
-      <input type="radio" name="rating" value="*" {% if item.rating == '*' %}checked{% endif %} /> *
-      <input type="radio" name="rating" value="**" {% if item.rating == '**' %}checked{% endif %} /> **
-      <input type="radio" name="rating" value="***" {% if item.rating == '***' %}checked{% endif %} /> ***
-      <input type="radio" name="rating" value="****" {% if item.rating == '****' %}checked{% endif %} /> ****
-      <input type="radio" name="rating" value="*****" {% if item.rating == '*****' %}checked{% endif %} /> *****
-    </p>
-    <input type="submit" value="Päivitä tiedot" />
-  </form>
-</body>
-
-</html>
+    </select>
+  </p>
+  {% endfor %}
+  <p>
+    Vaikeustaso <br />
+    <input type="radio" name="difficulty_level" value="Erittäin helppo" {% if item.difficulty_level == 'Erittäin helppo' %}checked{% endif %} /> Erittäin helppo
+    <input type="radio" name="difficulty_level" value="Helppo" {% if item.difficulty_level == 'Helppo' %}checked{% endif %} /> Helppo
+    <input type="radio" name="difficulty_level" value="Keskitaso" {% if item.difficulty_level == 'Keskitaso' %}checked{% endif %} /> Keskitaso
+    <input type="radio" name="difficulty_level" value="Vaikea" {% if item.difficulty_level == 'Vaikea' %}checked{% endif %} /> Vaikea
+    <input type="radio" name="difficulty_level" value="Erittäin vaikea" {% if item.difficulty_level == 'Erittäin vaikea' %}checked{% endif %} /> Erittäin vaikea
+  </p>
+  <p>
+    Arvosana <br />
+    <input type="radio" name="rating" value="*" {% if item.rating == '*' %}checked{% endif %} /> *
+    <input type="radio" name="rating" value="**" {% if item.rating == '**' %}checked{% endif %} /> **
+    <input type="radio" name="rating" value="***" {% if item.rating == '***' %}checked{% endif %} /> ***
+    <input type="radio" name="rating" value="****" {% if item.rating == '****' %}checked{% endif %} /> ****
+    <input type="radio" name="rating" value="*****" {% if item.rating == '*****' %}checked{% endif %} /> *****
+  </p>
+  <input type="submit" value="Päivitä tiedot" />
+</form>
+{% endblock %}

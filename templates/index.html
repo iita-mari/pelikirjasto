@@ -1,37 +1,13 @@
-<!DOCTYPE html>
-<html>
+{% extends "layout.html" %}
 
-<head>
-  <title>Pelikirjasto</title>
-</head>
+{% block title %}Etusivu{% endblock %}
 
-<body>
-  <h1>Pelikirjasto</h1>
+{% block content %}
+<h2>Pelit</h2>
 
-  {% if session.user_id %}
-  <p>
-    Olet kirjautunut tunnuksella: {{ session.username }}
-  </p>
-  {% endif %}
-
-  <p>
-    <a href="/find_item">Etsi peli</a> |
-  {% if session.user_id %}
-    <a href="/new_item">Lisää uusi peli</a> |
-    <a href="/logout">Kirjaudu ulos</a>
-  {% else %}
-  <a href="/login">Kirjaudu sisään</a> |
-  <a href="/register">Luo tunnus</a>
-  {% endif %}
-  </p>
-
-  <h2>Pelit</h2>
-
-  <ul>
-    {% for item in items %}
-    <li><a href="/item/{{ item.id }}">{{ item.title }}</a></li>
-    {% endfor %}
-  </ul>
-</body>
-
-</html>
+<ul>
+  {% for item in items %}
+  <li><a href="/item/{{ item.id }}">{{ item.title }}</a></li>
+  {% endfor %}
+</ul>
+{% endblock %}

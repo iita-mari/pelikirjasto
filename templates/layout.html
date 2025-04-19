@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>{% block title %}{% endblock %}</title>
+</head>
+
+<body>
+  <h1>Pelikirjasto</h1>
+
+  {% if session.user_id %}
+  <p>
+    Olet kirjautunut tunnuksella: {{ session.username }}
+  </p>
+  {% endif %}
+
+  <p>
+    <a href="/">Etusivu</a> |
+    <a href="/find_item">Etsi peli</a> |
+  {% if session.user_id %}
+    <a href="/new_item">Lisää uusi peli</a> |
+    <a href="/logout">Kirjaudu ulos</a>
+  {% else %}
+  <a href="/login">Kirjaudu sisään</a> |
+  <a href="/register">Rekisteröidy</a>
+  {% endif %}
+  </p>
+
+  {% block content %}{% endblock %}
+</body>
+
+</html>

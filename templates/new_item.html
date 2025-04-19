@@ -1,48 +1,45 @@
-<!DOCTYPE html>
-<html>
+{% extends "layout.html" %}
 
-<head>
-  <title>Lisää uusi peli pelikirjastoon</title>
-</head>
+{% block title %}Lisää uusi peli{% endblock %}
 
-<body>
-  <h1>Uusi peli</h1>
-  <h2> Perustiedot </h2>
-  <form action="/create_item" method="post">
-    <p>
-      Pelin nimi<br />
-      <input type="text" name="title" maxlength="50" size="25" required/>
-    </p>
-    {% for class in classes %}
-    <p>
-      {{ class }}: <br />
-      <select name="classes">
-        <option value="">(valitse)</option>
-      {% for option in classes[class] %}
-        <option value="{{ class }}:{{ option }}">{{ option }}</option>
-      {% endfor %}
-      </select>
-    </p>
+{% block content %}
+<h2>Lisää uusi peli</h2>
+
+<h3>Pelin perustiedot</h3>
+<form action="/create_item" method="post">
+  <p>
+    Pelin nimi<br />
+    <input type="text" name="title" maxlength="50" size="25" required/>
+  </p>
+  {% for class in classes %}
+  <p>
+    {{ class }}: <br />
+    <select name="classes">
+      <option value="">(valitse)</option>
+    {% for option in classes[class] %}
+      <option value="{{ class }}:{{ option }}">{{ option }}</option>
     {% endfor %}
-    <h2>Arvio pelistä</h2>
-    <p>
-      Vaikeustaso <br />
-      <input type="radio" name="difficulty_level" value="Erittäin helppo" /> Erittäin helppo
-      <input type="radio" name="difficulty_level" value="Helppo" /> Helppo
-      <input type="radio" name="difficulty_level" value="Keskitaso" /> Keskitaso
-      <input type="radio" name="difficulty_level" value="Vaikea" /> Vaikea
-      <input type="radio" name="difficulty_level" value="Erittäin vaikea" /> Erittäin vaikea
-    </p>
-    <p>
-      Arvosana <br />
-      <input type="radio" name="rating" value="*" /> *
-      <input type="radio" name="rating" value="**" /> **
-      <input type="radio" name="rating" value="***" /> ***
-      <input type="radio" name="rating" value="****" /> ****
-      <input type="radio" name="rating" value="*****" /> *****
-    </p>
-    <input type="submit" value="Lisää uusi peli" />
-  </form>
-</body>
+    </select>
+  </p>
+  {% endfor %}
 
-</html>
+  <h3>Arvio pelistä</h3>
+  <p>
+    Vaikeustaso <br />
+    <input type="radio" name="difficulty_level" value="Erittäin helppo" /> Erittäin helppo
+    <input type="radio" name="difficulty_level" value="Helppo" /> Helppo
+    <input type="radio" name="difficulty_level" value="Keskitaso" /> Keskitaso
+    <input type="radio" name="difficulty_level" value="Vaikea" /> Vaikea
+    <input type="radio" name="difficulty_level" value="Erittäin vaikea" /> Erittäin vaikea
+  </p>
+  <p>
+    Arvosana <br />
+    <input type="radio" name="rating" value="*" /> *
+    <input type="radio" name="rating" value="**" /> **
+    <input type="radio" name="rating" value="***" /> ***
+    <input type="radio" name="rating" value="****" /> ****
+    <input type="radio" name="rating" value="*****" /> *****
+  </p>
+  <input type="submit" value="Lisää uusi peli" />
+</form>
+  {% endblock %}
