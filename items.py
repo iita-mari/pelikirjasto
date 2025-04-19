@@ -15,11 +15,7 @@ def get_all_classes():
 def add_item(title, difficulty_level, rating, user_id, classes):
     sql = """INSERT INTO items (title, difficulty_level, rating, user_id)
              VALUES (?, ?, ?, ?)"""
-    db.execute(sql,
-               [title,
-                difficulty_level,
-                rating,
-                user_id])
+    db.execute(sql, [title, difficulty_level, rating, user_id])
 
     item_id = db.last_insert_id()
 
