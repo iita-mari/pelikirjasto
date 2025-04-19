@@ -20,8 +20,8 @@ def add_item(title, difficulty_level, rating, user_id, classes):
     item_id = db.last_insert_id()
 
     sql = "INSERT INTO item_classes (item_id, title, value) VALUES (?, ?, ?)"
-    for title, value in classes:
-        db.execute(sql, [item_id, title, value])
+    for class_title, class_value in classes:
+        db.execute(sql, [item_id, class_title, class_value])
 
 def add_comment(item_id, user_id, comment_text):
     sql = """INSERT INTO comments (item_id, user_id, comment_text)
