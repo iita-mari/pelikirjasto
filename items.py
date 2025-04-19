@@ -14,7 +14,7 @@ def get_all_classes():
 
 def add_item(title, difficulty_level, rating, user_id, classes):
     sql = """INSERT INTO items (title, difficulty_level, rating, user_id)
-            VALUES (?, ?, ?, ?)"""
+             VALUES (?, ?, ?, ?)"""
     db.execute(sql,
                [title,
                 difficulty_level,
@@ -29,14 +29,14 @@ def add_item(title, difficulty_level, rating, user_id, classes):
 
 def add_comment(item_id, user_id, comment_text):
     sql = """INSERT INTO comments (item_id, user_id, comment_text)
-            VALUES (?, ?, ?)"""
+             VALUES (?, ?, ?)"""
     db.execute(sql, [item_id, user_id, comment_text])
 
 def get_comments(item_id):
     sql = """SELECT comments.comment_text, users.id user_id, users.username
-            FROM comments, users
-            WHERE comments.item_id = ? AND comments.user_id = users.id
-            ORDER BY comments.id DESC"""
+             FROM comments, users
+             WHERE comments.item_id = ? AND comments.user_id = users.id
+             ORDER BY comments.id DESC"""
     return db.query(sql, [item_id])
 
 def get_classes(item_id):
@@ -44,7 +44,10 @@ def get_classes(item_id):
     return db.query(sql, [item_id])
 
 def get_items():
-    sql = "SELECT id, title FROM items ORDER BY id DESC"
+    sql = """SELECT items.id, items.title, users.id user_id, users.username
+             FROM items, users
+             WHERE items.user_id = users.id
+             ORDER BY items.id DESC"""
     return db.query(sql)
 
 def get_item(item_id):
@@ -69,11 +72,7 @@ def update_item(item_id, title, difficulty_level, rating, classes):
                               difficulty_level = ?,
                               rating = ?
                           WHERE id = ?"""
-    db.execute(sql,
-               [title,
-                difficulty_level,
-                rating,
-                item_id])
+    db.execute(sql, [title, difficulty_level, rating, item_id])
 
     sql = "DELETE FROM item_classes WHERE item_id = ?"
     db.execute(sql, [item_id])
