@@ -39,7 +39,6 @@ def get_comments(item_id):
             ORDER BY comments.id DESC"""
     return db.query(sql, [item_id])
 
-
 def get_classes(item_id):
     sql = "SELECT title, value FROM item_classes WHERE item_id = ?"
     return db.query(sql, [item_id])
