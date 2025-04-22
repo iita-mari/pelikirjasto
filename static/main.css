@@ -3,10 +3,20 @@ body {
   max-width: 50em;
   font-family: sans-serif;
   background-color: turquoise;
+  color: #2c282c;
 }
 
 .item{
-    border: 2px solid black;
-    margin: 1em;
-    padding: 0.2em 0.5em;
+  border: 2px solid #2c282c;
+  margin: 1em;
+  padding: 0.2em 0.5em;
+  color: #2c282c;
+}
+
+.info {
+  border: 2px solid #2c282c;
+  margin: 1em;
+  padding: 0.5em;
+  background-color: #bfbf00;
+  color: #2c282c;
 }

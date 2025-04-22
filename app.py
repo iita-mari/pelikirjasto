@@ -1,6 +1,6 @@
 import sqlite3
 from flask import Flask
-from flask import abort, redirect, render_template, request, session
+from flask import abort, flash, redirect, render_template, request, session
 from werkzeug.security import check_password_hash, generate_password_hash
 import config
 import db
@@ -83,13 +83,15 @@ def create_item():
 def create_comment():
     require_login()
 
-    comment_text = request.form["comment_text"]
-    if not comment_text:
-        abort(403)
     item_id = request.form["item_id"]
     item = items.get_item(item_id)
+    comment_text = request.form["comment_text"]
+    if not comment_text:
+        flash("VIRHE: Kommentti ei voi olla tyhjä")
+        return redirect("/item/" + str(item_id))
     if not item:
-        abort(403)
+        flash("VIRHE: Tuote virheellinen")
+        return redirect("/")
     user_id = session["user_id"]
 
     items.add_comment(item_id, user_id, comment_text)
@@ -150,6 +152,7 @@ def update_item():
 @app.route("/remove_item/<int:item_id>", methods=["GET", "POST"])
 def remove_item(item_id):
     require_login()
+
     item = items.get_item(item_id)
     if not item:
         abort(404)
@@ -176,14 +179,17 @@ def create():
     password1 = request.form["password1"]
     password2 = request.form["password2"]
     if password1 != password2:
-        return "VIRHE: salasanat eivät ole samat"
+        flash("VIRHE: Salasanat eivät ole samat")
+        return redirect("/register")
 
     try:
         users.create_user(username, password1)
     except sqlite3.IntegrityError:
-        return "VIRHE: tunnus on jo varattu"
+        flash("VIRHE: Tunnus on jo varattu")
+        return redirect("/register")
 
-    return "Tunnus luotu"
+    flash("Tunnus luotu")
+    return redirect("/")
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
@@ -200,7 +206,8 @@ def login():
             session["username"] = username
             return redirect("/")
         else:
-            return "VIRHE: väärä tunnus tai salasana"
+            flash("VIRHE: Väärä tunnus tai salasana")
+            return redirect("/login")
 
 @app.route("/logout")
 def logout():
