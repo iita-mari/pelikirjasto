@@ -3,7 +3,7 @@
 {% block title %}Muokkaa pelin tietoja{% endblock %}
 
 {% block content %}
-<h2>Muokkaa pelin tietoja</h2>
+<h2>Muokkaa pelin <a href="/item/{{ item.id }}">{{ item.title }}</a> tietoja</h2>
 <form action="/update_item" method="post">
   <p>
     Pelin nimi: <br />
@@ -43,5 +43,10 @@
     <input type="radio" name="rating" value="*****" {% if item.rating == '*****' %}checked{% endif %} /> *****
   </p>
   <input type="submit" value="Päivitä tiedot" />
+  <input type="submit" name="back" value="Palaa takaisin">
 </form>
+
+<p>
+  <a href="/item/{{ item.id }}">Takaisin pelin tietoihin</a>
+</p>
 {% endblock %}
