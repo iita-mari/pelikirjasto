@@ -30,7 +30,7 @@
 <h3>Kommentit:</h3>
 <ul>
   {% for comment in comments %}
-    <li>Käyttäjä <a href="/user/{{ comment.user_id }}">{{ comment.username }}</a> kommentoi: {{ comment.comment_text }}</li>
+    <li>Käyttäjä <a href="/user/{{ comment.user_id }}">{{ comment.username }}</a> kommentoi: {{ comment.comment_text | show_lines }}</li>
   {% endfor %}
 </ul>
 {% if session.user_id %}
