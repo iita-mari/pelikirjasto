@@ -40,9 +40,7 @@
     <input type="radio" name="rating" value="****" /> ****
     <input type="radio" name="rating" value="*****" /> *****
   </p>
+  <input type="hidden" name="csrf_token" value="{{ session.csrf_token }}" />
   <input type="submit" value="Lisää uusi peli" />
 </form>
-<p>
-  <a href="/">Takaisin etusivulle</a>
-</p>
 {% endblock %}
