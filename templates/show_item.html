@@ -36,8 +36,8 @@
 {% if session.user_id %}
 <h3>Lisää uusi kommentti</h3>
 <form action="/create_comment" method="post">
-  Kommentti: <br />
-  <textarea name="comment_text" rows="8" cols="40"></textarea> <br />
+  <label for="comment_text">Kommentti</label>: <br />
+  <textarea name="comment_text" id="comment_text" rows="8" cols="40"></textarea> <br />
   <input type="hidden" name="item_id" value="{{ item.id }}">
   <input type="hidden" name="csrf_token" value="{{ session.csrf_token }}" />
   <input type="submit" value="Lisää kommentti" />

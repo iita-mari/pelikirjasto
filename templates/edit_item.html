@@ -6,15 +6,15 @@
 <h2>Muokkaa pelin <a href="/item/{{ item.id }}">{{ item.title }}</a> tietoja</h2>
 <form action="/update_item" method="post">
   <p>
-    Pelin nimi: <br />
-    <input type="text" name="title" maxlength="50" size="25" value="{{ item.title }}"/>
+    <label for="title">Pelin nimi</label>: <br/>
+    <input type="text" name="title" id="title" maxlength="50" size="25" value="{{ item.title }}" required />
   </p>
   <input type="hidden" name="item_id" value="{{ item.id }}" />
   <p>
   {% for class in all_classes %}
   <p>
-    {{ class }}: <br />
-    <select name="classes">
+    <label for="class{{ class }}">{{ class }}</a>: <br />
+    <select name="classes" id="class{{ class}}">
       <option value="">(valitse)</option>
     {% for option in all_classes[class] %}
       {% if classes[class] == option %}
@@ -27,20 +27,33 @@
   </p>
   {% endfor %}
   <p>
-    Vaikeustaso <br />
-    <input type="radio" name="difficulty_level" value="Erittäin helppo" {% if item.difficulty_level == 'Erittäin helppo' %}checked{% endif %} /> Erittäin helppo
-    <input type="radio" name="difficulty_level" value="Helppo" {% if item.difficulty_level == 'Helppo' %}checked{% endif %} /> Helppo
-    <input type="radio" name="difficulty_level" value="Keskitaso" {% if item.difficulty_level == 'Keskitaso' %}checked{% endif %} /> Keskitaso
-    <input type="radio" name="difficulty_level" value="Vaikea" {% if item.difficulty_level == 'Vaikea' %}checked{% endif %} /> Vaikea
-    <input type="radio" name="difficulty_level" value="Erittäin vaikea" {% if item.difficulty_level == 'Erittäin vaikea' %}checked{% endif %} /> Erittäin vaikea
+    <label>Vaikeustaso</label>: <br />
+    <input type="radio" name="difficulty_level" id="difficulty_none" value="Ei arviota" {% if item.difficulty_level == 'Ei arviota' %}checked{% endif %} />
+    <label for="difficulty_none"">Ei arviota</label>
+    <input type="radio" name="difficulty_level" id="difficulty_very_easy" value="Erittäin helppo" {% if item.difficulty_level == 'Erittäin helppo' %}checked{% endif %} />
+    <label for="difficulty_very_easy">Erittäin helppo</label>
+    <input type="radio" name="difficulty_level" id="difficulty_easy" value="Helppo" {% if item.difficulty_level == 'Helppo' %}checked{% endif %} />
+    <label for="difficulty_easy">Helppo</label>
+    <input type="radio" name="difficulty_level" id="difficulty_medium" value="Keskitaso" {% if item.difficulty_level == 'Keskitaso' %}checked{% endif %} />
+    <label for="difficulty_medium">Keskitaso</label>
+    <input type="radio" name="difficulty_level" id="difficulty_hard" value="Vaikea" {% if item.difficulty_level == 'Vaikea' %}checked{% endif %} />
+    <label for="difficulty_hard">Vaikea</label>
+    <input type="radio" name="difficulty_level" id="difficulty_very_hard" value="Erittäin vaikea" {% if item.difficulty_level == 'Erittäin vaikea' %}checked{% endif %} />
+    <label for="difficulty_very_hard">Erittäin vaikea</label>
   </p>
+
   <p>
-    Arvosana <br />
-    <input type="radio" name="rating" value="*" {% if item.rating == '*' %}checked{% endif %} /> *
-    <input type="radio" name="rating" value="**" {% if item.rating == '**' %}checked{% endif %} /> **
-    <input type="radio" name="rating" value="***" {% if item.rating == '***' %}checked{% endif %} /> ***
-    <input type="radio" name="rating" value="****" {% if item.rating == '****' %}checked{% endif %} /> ****
-    <input type="radio" name="rating" value="*****" {% if item.rating == '*****' %}checked{% endif %} /> *****
+    <label>Arvosana</label>: <br />
+    <input type="radio" name="rating" id="rating_1" value="*" {% if item.rating == '*' %}checked{% endif %} />
+    <label for="rating_1">*</label>
+    <input type="radio" name="rating" id="rating_2" value="**" {% if item.rating == '**' %}checked{% endif %} />
+    <label for="rating_2">**</label>
+    <input type="radio" name="rating" id="rating_3" value="***" {% if item.rating == '***' %}checked{% endif %} />
+    <label for="rating_3">***</label>
+    <input type="radio" name="rating" id="rating_4" value="****" {% if item.rating == '****' %}checked{% endif %} />
+    <label for="rating_4">****</label>
+    <input type="radio" name="rating" id="rating_5" value="*****" {% if item.rating == '*****' %}checked{% endif %} />
+    <label for="rating_5">*****</label>
   </p>
   <input type="hidden" name="csrf_token" value="{{ session.csrf_token }}" />
   <input type="submit" value="Päivitä tiedot" />
