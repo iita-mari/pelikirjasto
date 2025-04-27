@@ -44,6 +44,8 @@
 
   <p>
     <label>Arvosana</label>: <br />
+    <input type="radio" name="rating" id="rating_none" value="Ei arviota" {% if item.rating == 'Ei arviota' %}checked{% endif %} />
+    <label for="rating_none">Ei arviota</label>
     <input type="radio" name="rating" id="rating_1" value="*" {% if item.rating == '*' %}checked{% endif %} />
     <label for="rating_1">*</label>
     <input type="radio" name="rating" id="rating_2" value="**" {% if item.rating == '**' %}checked{% endif %} />
