@@ -30,15 +30,25 @@ Välipalautus 2:n tavoitteiden mukaisesti:
 - Käyttäjä näkee sovellukseen lisätyt tietokohteet.
 - Käyttäjä pystyy etsimään tietokohteita hakusanalla.
 
-## Projektin käynnistäminen
-- Luo ja käynnistä virtuaaliympäristö:
-  - `$ python3 -m venv venv`
-  - `$ source venv/bin/activate`
-- Tämän jälkeen asenna flask-riippuvuus:
-  - `$ pip install flask`
-- Sovelluksen käynnistäminen:
-  - `flask run`
+## Sovelluksen asennus ja käynnistäminen
+1. Luo ja käynnistä virtuaaliympäristö:
+```
+$ python3 -m venv venv
+$ source venv/bin/activate
+```
 
-Psst! Tietokannan alustaminen tapahtuu tällä hetkellä seuraavasti (ennen sovelluksen käynnistämistä):
-  - `sqlite3 database.db < schema.sql`
-  - `sqlite3 database.db < init.sql`
+2. Asenna flask-riippuvuus:
+```
+$ pip install flask
+ ```
+
+3. Alusta tietokanta ja lisää alkutiedot:
+```
+$ sqlite3 database.db < schema.sql
+$ sqlite3 database.db < init.sql
+```
+
+4. Käynnistä sovellus:
+```
+$ flask run
+```
