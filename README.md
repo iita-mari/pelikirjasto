@@ -11,9 +11,11 @@ Sovelluksen tarkoituksena on mahdollistaa käyttäjälle lista hänen omistamist
 - [x] Käyttäjä voi poistaa sovelluksesta pelejä
 - [x] Käyttäjä voi lisätä ja muokata pelien tietoja
 - [x] Käyttäjä voi määrittää pelille vaikeustason ja arvosanan
-- [x] Käyttäjällä on käyttäjäsivut, josta näkee käyttäjän pelikirjaston, käyttäjän lisäämien pelien määrät ja käyttäjän antamat tiedot peleille
-- [x] Käyttäjä voi nähdä muiden käyttäjien lisäämät pelit
+- [x] Käyttäjällä on käyttäjäsivut,josta näkee käyttäjän lisäämät pelit, pelien määrän ja pääsee katsomaan käyttäjän antamia tietoja peleille
+- [x] Käyttäjä voi lisätä profiiliinsa kuvan ja vaihtaa sen
+- [x] Käyttäjä voi nähdä muiden käyttäjien lisäämät pelit ja niille annetut tiedot
 - [x] Käyttäjä voi etsiä pelejä hakemalla peliä nimellä
+- [x] Pelejä voi kommentoida
 
 ## Sovelluksen asennus ja käynnistäminen
 1. Luo ja käynnistä virtuaaliympäristö:
@@ -25,7 +27,7 @@ $ source venv/bin/activate
 2. Asenna flask-riippuvuus:
 ```
 $ pip install flask
- ```
+```
 
 3. Alusta tietokanta ja lisää alkutiedot:
 ```
