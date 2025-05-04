@@ -11,12 +11,6 @@
 <p>
     Uusi kuva korvaa vanhan profiilikuvan.
 </p>
-  
-{% for message in get_flashed_messages() %}
-<p class="info">
-    {{ message }}
-</p>
-{% endfor %}
 
 <form action="/images" method="post" enctype="multipart/form-data">
     <p>
