@@ -44,7 +44,6 @@ def show_user(user_id):
 @app.route("/images", methods=["GET", "POST"])
 def add_image():
     require_login()
-    print("Testi 2")
 
     if request.method == "GET":
         return render_template("images.html")
@@ -65,7 +64,6 @@ def add_image():
         user_id = session["user_id"]
         users.update_image(user_id, image)
         flash("Kuvan lisääminen onnistui")
-        print("Testi 1")
         return redirect("/user/" + str(user_id))
 
 @app.route("/image/<int:user_id>")
