@@ -4,9 +4,16 @@
 
 {% block content %}
 <h2>Käyttäjä: {{ user.username }}</h2>
+{% if user.has_image %}
+<img src="/image/{{ user.id }}" alt="Käyttäjän {{ user.username }} kuva">
+{% endif %}
+
+{% if user.id == session.user_id %}
 <p>
-  Käyttäjällä on pelejä yhteensä: {{ items | count }}
+  <a href="/images">Lisää tai muokkaa profiilikuvaa</a>
 </p>
+{% endif %}
+
 <h3>Pelit</h3>
 <ul>
   {% for item in items %}

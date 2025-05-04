@@ -2,7 +2,7 @@ import secrets
 import sqlite3
 
 from flask import Flask
-from flask import abort, flash, redirect, render_template, request, session
+from flask import abort, flash, make_response, redirect, render_template, request, session
 import markupsafe
 
 import config
@@ -40,6 +40,43 @@ def show_user(user_id):
         abort(404)
     user_items = users.get_items(user_id)
     return render_template("show_user.html", user=user, items=user_items)
+
+@app.route("/images", methods=["GET", "POST"])
+def add_image():
+    require_login()
+    print("Testi 2")
+
+    if request.method == "GET":
+        return render_template("images.html")
+
+    if request.method == "POST":
+        check_csrf()
+
+        file = request.files["image"]
+        if not file.filename.endswith(".png"):
+            flash("VIRHE: Lähettämäsi tiedosto ei ole png-tiedosto")
+            return redirect("/images")
+
+        image = file.read()
+        if len(image) > 100 * 1024:
+            flash("VIRHE: Lähettämäsi tiedosto on liian suuri")
+            return redirect("/images")
+
+        user_id = session["user_id"]
+        users.update_image(user_id, image)
+        flash("Kuvan lisääminen onnistui")
+        print("Testi 1")
+        return redirect("/user/" + str(user_id))
+
+@app.route("/image/<int:user_id>")
+def show_image(user_id):
+    image = users.get_image(user_id)
+    if not image:
+        abort(404)
+
+    response = make_response(bytes(image))
+    response.headers.set("Content-Type", "image/png")
+    return response
 
 @app.route("/find_item")
 def find_index():
