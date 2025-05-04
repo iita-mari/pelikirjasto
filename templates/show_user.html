@@ -4,14 +4,13 @@
 
 {% block content %}
 <h2>Käyttäjä: {{ user.username }}</h2>
-{% if user.has_image %}
-<img src="/image/{{ user.id }}" alt="Käyttäjän {{ user.username }} kuva">
-{% endif %}
-
 {% if user.id == session.user_id %}
 <p>
   <a href="/images">Lisää tai muokkaa profiilikuvaa</a>
 </p>
+{% endif %}
+{% if user.has_image %}
+<img src="/image/{{ user.id }}" alt="Käyttäjän {{ user.username }} profiilikuva">
 {% endif %}
 
 <h3>Pelit</h3>

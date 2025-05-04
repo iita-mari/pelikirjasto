@@ -4,6 +4,7 @@
 
 {% block content %}
   <h2>Poista pelin <a href="/item/{{ item.id }}">{{ item.title }} </a>tiedot</h2>
+
   <p>Haluatko varmasti poistaa pelin {{item.title }} tiedot?</p>
   <form action="/remove_item/{{ item.id }}" method="post">
     <input type="hidden" name="csrf_token" value="{{ session.csrf_token }}" />
