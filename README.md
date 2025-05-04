@@ -2,7 +2,7 @@
 HY:n Tietokannat ja web-ohjelmointi -kurssin harjoitustyö
 
 ## Sovelluksen kuvaus
-Sovelluksen tarkoituksena on mahdollistaa käyttäjälle lista hänen omistamistaan (lauta)peleistä. Eri käyttäjät voivat nähdä toistensa pelikirjastot sekä arvioida pelejä (kuten haastavuus ja arvosana).
+Sovelluksen tarkoituksena on mahdollistaa käyttäjälle lista hänen omistamistaan (lauta)peleistä. Eri käyttäjät voivat nähdä toistensa pelikirjastot.
 
 ## Sovelluksen toiminnot
 - [x] Käyttäjä voi luoda uuden käyttäjätunnuksen
@@ -37,3 +37,6 @@ $ sqlite3 database.db < init.sql
 ```
 $ flask run
 ```
+
+## Suuren tietomäärän käsittely
+Sovelluksen toimivuutta suuren tietomäärän käsittelyssä on testattu `seed.py` tiedoston avulla. `seed.py` on toteutettu kurssin materiaalin mukaisesti ja se luo tuhat käyttäjää, sata tuhatta peliä ja miljoona kommenttia. Ilman sivutustakin sovellus hakee tiedot nopeasti (elapsed time: 0.66 s). 
