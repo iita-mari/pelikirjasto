@@ -25,5 +25,8 @@
     </p>
     <input type="hidden" name="csrf_token" value="{{ session.csrf_token }}" />
     <input type="submit" value="Lähetä" />
-  </form>
+</form>
+<p>
+    <a href="/user/{{ session.user_id }}">Takaisin käyttäjätietoihin</a> | <a href="/">Takaisin etusivulle</a>
+</p>
 {% endblock %}
