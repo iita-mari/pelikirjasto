@@ -9,26 +9,11 @@ Sovelluksen tarkoituksena on mahdollistaa käyttäjälle lista hänen omistamist
 - [x] Käyttäjä voi kirjautua sisään käyttäjätunnuksella ja salasanalla
 - [x] Käyttäjä voi lisätä sovellukseen pelejä
 - [x] Käyttäjä voi poistaa sovelluksesta pelejä
-- [x] Käyttäjä voi lisätä ja muokata peleille tietoja, kuten pelaajamäärän ja pelin ikäsuosituksen
-- Käyttäjällä on käyttäjäsivut, josta näkee käyttäjän pelikirjaston ja arvioidut pelit
-  - [x] Käyttäjällä on alkeelliset käyttäjäsivut
-- [x] Käyttäjä voi nähdä muiden käyttäjien lisäämät pelit
-- Käyttäjä voi etsiä pelejä hakemalla peliä nimellä, pelaajamäärällä tai ikäsuosituksella
-  - [x] Käyttäjä voi etsiä pelejä hakemalla peliä nimellä
+- [x] Käyttäjä voi lisätä ja muokata pelien tietoja
 - [x] Käyttäjä voi määrittää pelille vaikeustason ja arvosanan
-- Pelejä voi järjestää vaikeustason tai arvosanan mukaan
-
-## Sovelluksen nykytilanne välitavoitteiden mukaan
-Välipalautus 3:n tavoitteiden mukaisesti:
-- Sovelluksessa on (alkeellinen) käyttäjäsivu, joka näyttää tällä hetkellä vain sovellukseen lisättyjen pelien määrän
-- Tietokohteilla eli peleillä on useampi luokittelu ja luokittelut ovat tietokannassa.
-- README.md-tiedosto kuvaa, mikä on sovelluksen nykyinen tilanne.
-
-Välipalautus 2:n tavoitteiden mukaisesti:
-- Käyttäjä pystyy luomaan tunnuksen ja kirjautumaan sisään sovellukseen.
-- Käyttäjä pystyy lisäämään ja muokkaamaan tietokohteita.
-- Käyttäjä näkee sovellukseen lisätyt tietokohteet.
-- Käyttäjä pystyy etsimään tietokohteita hakusanalla.
+- [x] Käyttäjällä on käyttäjäsivut, josta näkee käyttäjän pelikirjaston, käyttäjän lisäämien pelien määrät ja käyttäjän antamat tiedot peleille
+- [x] Käyttäjä voi nähdä muiden käyttäjien lisäämät pelit
+- [x] Käyttäjä voi etsiä pelejä hakemalla peliä nimellä
 
 ## Sovelluksen asennus ja käynnistäminen
 1. Luo ja käynnistä virtuaaliympäristö:
