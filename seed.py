@@ -17,8 +17,19 @@ for i in range(1, user_count + 1):
                ["user" + str(i), "password_hash" + str(i), None])
 
 for i in range(1, item_count + 1):
-    db.execute("INSERT INTO items (title, min_players, max_players, age_recommendation, duration, difficulty_level, rating, user_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
-               ["item" + str(i), random.randint(1, 4), random.randint(5, 10), "10+", "1h", "easy", "5", random.randint(1, user_count)])
+    db.execute("""INSERT INTO items
+               (title,
+               min_players,
+               max_players,
+               age_recommendation,
+               duration, difficulty_level,
+               rating, user_id)
+               VALUES (?, ?, ?, ?, ?, ?, ?, ?)""",
+               ["item" + str(i),
+                random.randint(1, 4),
+                random.randint(5, 10),
+                "10+", "1h", "easy", "5",
+                random.randint(1, user_count)])
 
 for i in range(1, comment_count + 1):
     user_id = random.randint(1, user_count)
