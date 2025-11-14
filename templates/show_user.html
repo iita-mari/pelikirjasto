@@ -14,6 +14,9 @@
 {% endif %}
 
 <h3>Pelit</h3>
+<p>
+  Pelejä kirjastossa: {{ items | count }}
+</p>
 <ul>
   {% for item in items %}
   <li><a href="/item/{{ item.id }}">{{ item.title }}</a></li>
