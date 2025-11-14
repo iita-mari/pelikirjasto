@@ -144,6 +144,9 @@ def create_comment():
     if not item:
         flash("VIRHE: Tuote virheellinen")
         return redirect("/")
+    if len(comment_text) > 5000:
+        flash("VIRHE: Kommentti on liian pitkä (yli 5000 merkkiä)")
+        return redirect("/item/" + str(item_id))
     user_id = session["user_id"]
 
     items.add_comment(item_id, user_id, comment_text)
