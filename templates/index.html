@@ -5,6 +5,13 @@
 {% block content %}
 <h2>Pelit</h2>
 
+<p>
+  <a href="/{{ page - 1 }}">&lt;&lt;</a>
+  Sivu {{ page }}/{{ page_count }}
+  <a href="/{{ page + 1 }}">&gt;&gt;</a>
+</p>
+<hr />
+
 {% for item in items %}
 <div class="item">
 Käyttäjä: <a href="/user/{{ item.user_id }}">{{ item.username }}</a><br />
@@ -12,4 +19,11 @@ Peli: <a href="/item/{{ item.id }}">{{ item.title }}</a><br />
 </div>
 {% endfor %}
 </ul>
+
+<p>
+  <a href="/{{ page - 1 }}">&lt;&lt;</a>
+  Sivu {{ page }}/{{ page_count }}
+  <a href="/{{ page + 1 }}">&gt;&gt;</a>
+</p>
+<hr />
 {% endblock %}
