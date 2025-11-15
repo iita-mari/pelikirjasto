@@ -9,8 +9,8 @@ db.execute("DELETE FROM comments")
 db.execute("DELETE FROM item_classes")
 
 user_count = 1000
-item_count = 10**5
-comment_count = 10**6
+item_count = 10**6
+comment_count = 10**7
 
 for i in range(1, user_count + 1):
     db.execute("INSERT INTO users (username, password_hash, image) VALUES (?, ?, ?)",
