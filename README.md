@@ -41,4 +41,9 @@ $ flask run
 ```
 
 ## Suuren tietomäärän käsittely
-Sovelluksen toimivuutta suuren tietomäärän käsittelyssä on testattu `seed.py` tiedoston avulla. `seed.py` on toteutettu kurssin materiaalin mukaisesti ja se luo tuhat käyttäjää, satatuhatta peliä ja miljoona kommenttia. Ilman sivutustakin sovellus hakee tiedot nopeasti (elapsed time: 0.66 s), mutta sivutus nopeuttaa tietojen hakemista (elapset time: 0.002 s).
+Sovelluksen toimivuutta suuren tietomäärän käsittelyssä on testattu `seed.py` tiedoston avulla. `seed.py` on toteutettu kurssin materiaalin mukaisesti ja se luo tuhat käyttäjää, miljoona peliä ja kymmenen miljoonaa kommenttia.
+
+Sivuston lataamiseen kuluva aika:
+- Ilman sivutusta ja indeksöintiä: 8.57s
+- Sivutus, ei indeksöintiä: 0.2s
+- Sivutus ja indeksöinti: 0.02s
