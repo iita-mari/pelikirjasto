@@ -239,26 +239,31 @@ def remove_item(item_id):
         else:
             return redirect("/item/" + str(item_id))
 
-@app.route("/register")
+@app.route("/register", methods=["GET", "POST"])
 def register():
-    return render_template("register.html")
+    if request.method == "GET":
+        return render_template("register.html", filled={})
 
-@app.route("/create", methods=["POST"])
-def create():
-    username = request.form["username"]
-    password1 = request.form["password1"]
-    password2 = request.form["password2"]
-    if password1 != password2:
-        flash("VIRHE: Salasanat eivät ole samat")
-        return redirect("/register")
+    if request.method == "POST":
+        username = request.form["username"]
+        if not username or len(username) > 16:
+            abort(403)
+        password1 = request.form["password1"]
+        password2 = request.form["password2"]
 
-    try:
-        users.create_user(username, password1)
-    except sqlite3.IntegrityError:
-        flash("VIRHE: Tunnus on jo varattu")
-        return redirect("/register")
+        if password1 != password2:
+            flash("VIRHE: Salasanat eivät ole samat")
+            filled = {"username": username}
+            return render_template("register.html", filled=filled)
 
-    flash("Tunnus luotu")
+        try:
+            users.create_user(username, password1)
+        except sqlite3.IntegrityError:
+            flash("VIRHE: Tunnus on jo varattu")
+            filled = {"username": username}
+            return render_template("register.html", filled=filled)
+
+    flash("Tunnus luotu, voit nyt kirjautua sisään")
     return redirect("/")
 
 @app.route("/login", methods=["GET", "POST"])

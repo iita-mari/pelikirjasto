@@ -5,10 +5,10 @@
 {% block content %}
 <h2>Rekisteröidy</h2>
 
-<form action="/create" method="post">
+<form action="/register" method="post">
   <p>
-    <label for="username">Tunnus</label>: <br />
-    <input type="text" name="username" id="username" />
+    <label for="username">Tunnus</label> (1-16 merkkiä): <br />
+    <input type="text" name="username" id="username" value="{{ filled.username }}" maxlength="16" required />
   </p>
   <p>
     <label for="password1">Salasana</label>: <br />
