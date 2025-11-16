@@ -1,6 +1,7 @@
 import secrets
 import sqlite3
 import math
+import time
 
 from flask import Flask
 from flask import abort, flash, make_response, redirect, render_template, request, session, g
@@ -9,7 +10,6 @@ import markupsafe
 import config
 import items
 import users
-import time
 
 app = Flask(__name__)
 app.secret_key = config.secret_key
