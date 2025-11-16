@@ -1,6 +1,6 @@
 # Pylint-raportti
 
-Pylint suoritettiin komennolla `pylint *.py` ha se antoi seuraavan raportin:
+Pylint suoritettiin komennolla `pylint *.py` ja se antoi seuraavan raportin:
 
 ```
 ************* Module app
@@ -94,7 +94,7 @@ Ilmoitukset, kuten
 ```
 app.py:236:8: R1705: Unnecessary "else" after "return", remove the "else" and de-indent the code inside it (no-else-return)
 ```
-kertovat, että koodin olisi voinut kirjoittaa tiiviimmin ilman `else`haaraa. On kuitenkin tietoinen (ja selkeämpi) päätös toteuttaa koodi kirjoittamalla molemmat, sekä `if`- että `else`-vaihtoehdot auki eikä varsinainen virhe.
+kertovat, että koodin olisi voinut kirjoittaa tiiviimmin ilman `else`haaraa. On kuitenkin tietoinen päätös toteuttaa koodi kirjoittamalla molemmat, sekä `if`- että `else`-vaihtoehdot auki eikä varsinainen virhe. Molempien haarojen kirjoittaminen lisää koodin luettavuutta.
 
 ### Vakion nimi
 Ilmoitukset, kuten
