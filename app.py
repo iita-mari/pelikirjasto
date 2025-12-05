@@ -251,6 +251,8 @@ def register():
         password1 = request.form["password1"]
         password2 = request.form["password2"]
 
+        if not password1 or len(password1) < 5:
+            abort(403)
         if password1 != password2:
             flash("VIRHE: Salasanat eivät ole samat")
             filled = {"username": username}
